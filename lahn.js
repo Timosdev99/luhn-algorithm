@@ -1,3 +1,14 @@
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function isRequired(input) {
+    return input.trim() !== '';
+}
+
 function luhnAlgorithm(cardNumber) {
     const digits = cardNumber.toString().split('').map(Number);
     let sum = 0;
@@ -20,7 +31,18 @@ function luhnAlgorithm(cardNumber) {
     return sum % 10 === 0;
 }
 
-// usage of the algorithm
-const cardNumber = 4532015112830366;
-const result = luhnAlgorithm(cardNumber);
-console.log(`Is ${cardNumber} valid? ${result}`);
+function promptAndValidate() {
+    rl.question('Enter card number: ', (input) => {
+        if (!isRequired(input)) {
+            console.log('This value is required. Please try again.');
+            promptAndValidate();
+        } else {
+            const result = luhnAlgorithm(input);
+            console.log(`Is ${input} valid? ${result}`);
+            rl.close();
+        }
+    });
+}
+
+// Usage
+promptAndValidate();

@@ -6,7 +6,7 @@ const rl = readline.createInterface({
 });
 
 function isRequired(input) {
-    return input.trim() !== '';
+    return input !== '';
 }
 
 function luhnAlgorithm(cardNumber) {

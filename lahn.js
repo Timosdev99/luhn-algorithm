@@ -22,7 +22,7 @@ function luhnAlgorithm(cardNumber) {
             if (digit > 9) {
                 digit -= 9;
             }
-        }
+        }    
 
         sum += digit;
         isEven = !isEven;

@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 
 function isRequired(input) {
     return input !== '';
-}
+}      
 
 function luhnAlgorithm(cardNumber) {
     const digits = cardNumber.toString().split('').map(Number);
